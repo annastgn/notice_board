@@ -56,6 +56,14 @@ class Post extends \yii\db\ActiveRecord
         ];
     }
 
+    public function fields()
+    {
+        return [
+            'title',
+            'content'
+        ];
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
