@@ -42,7 +42,7 @@ return [
 
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'enableStrictParsing'=>true,
+            'enableStrictParsing'=>false,
             'showScriptName' => false,
             'rules' => [
                 [

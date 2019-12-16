@@ -5,7 +5,6 @@ namespace frontend\controllers;
 
 use frontend\models\api\PostAPI;
 use frontend\controllers\BaseApiController;
-use frontend\models\MasterServicesChoiceForm;
 use frontend\models\PostsShow;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
@@ -25,5 +24,9 @@ class PostController extends Controller
         return $this->render('index',[
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionCreate(){
+        
     }
 }
