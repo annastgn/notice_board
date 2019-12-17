@@ -13,6 +13,11 @@ use Yii;
  * @property int $updated_at
  * @property string|null $title
  * @property string|null $content
+ * @property string|null $city
+ * @property float|null $cost
+ * @property string|null $description
+ * @property string|null $category
+ * @property int|null $status
  *
  * @property User $user
  */
@@ -33,10 +38,11 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'created_at', 'updated_at'], 'required'],
-            [['user_id', 'created_at', 'updated_at'], 'default', 'value' => null],
-            [['user_id', 'created_at', 'updated_at'], 'integer'],
-            [['content'], 'string'],
-            [['title'], 'string', 'max' => 255],
+            [['user_id', 'created_at', 'updated_at', 'status'], 'default', 'value' => null],
+            [['user_id', 'created_at', 'updated_at', 'status'], 'integer'],
+            [['content', 'description'], 'string'],
+            [['cost'], 'number'],
+            [['title', 'city', 'category'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -53,6 +59,11 @@ class Post extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'title' => 'Title',
             'content' => 'Content',
+            'city' => 'City',
+            'cost' => 'Cost',
+            'description' => 'Description',
+            'category' => 'Category',
+            'status' => 'Status',
         ];
     }
 

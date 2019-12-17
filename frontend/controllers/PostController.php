@@ -15,15 +15,9 @@ class PostController extends Controller
 
     public function actionIndex(){
         $form = new PostsShow();
-        $model=$form->show();
+        $dataProvider=$form->show();
 
-        $dataProvider = new ArrayDataProvider([
-            'allModels' => $model
-        ]);
-
-        return $this->render('index',[
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->render('index',['dataProvider'=>$dataProvider]);
     }
 
     public function actionCreate(){

@@ -1,14 +1,16 @@
 <?php
+use yii\widgets\ListView;
+use yii\data\ActiveDataProvider;
+
 /* @var $dataProvider yii\data\ActiveDataProvider */
 ?>
 <div class="ShowPosts">
-    <?=  \yii\grid\GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns'=> [
-            'title',
-            'content'
-        ]
-    ])
-    ?>
-    <h1></h1>
+<ul>
+    <li><?php
+        echo  ListView::widget([
+            'dataProvider' => $dataProvider,
+            'itemView' => '_item',
+        ]);
+        ?></li>
+</ul>
 </div>

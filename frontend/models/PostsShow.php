@@ -3,7 +3,6 @@
 
 namespace frontend\models;
 
-use common\models\MasterServices;
 use Yii;
 use yii\base\Model;
 use common\models\Post;
@@ -16,13 +15,26 @@ class PostsShow extends Post
 {
 
     function show(){
-          $query = Post::find()->asArray()->all();
-//        var_dump($query);
-//        die;
-//        $dataProvider = new ActiveDataProvider([
-//            'query' => $query,
-//        ]);
-        return $query;
+
+        $query = Post::find()
+            ->select(['title', 'content', 'post.city', 'cost', 'username'])
+            ->joinWith('user');
+            //->where(['post.status' => Order::STATUS_ACTIVE])
+//            ->all();
+
+        $provider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'title' => SORT_ASC,
+                ]
+            ],
+        ]);
+
+        return $provider;
     }
 
 
